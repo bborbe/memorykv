@@ -16,6 +16,12 @@ import (
 	"golang.org/x/vuln/internal/semver"
 )
 
+const (
+	fetchingVulnsMessage    = "Fetching vulnerabilities from the database..."
+	checkingSrcVulnsMessage = "Checking the code against the vulnerabilities..."
+	checkingBinVulnsMessage = "Checking the binary against the vulnerabilities..."
+)
+
 // Result contains information on detected vulnerabilities.
 // For call graph analysis, it provides information on reachability
 // of vulnerable symbols through entry points of the program.
@@ -162,6 +168,10 @@ func affectingVulnerabilities(vulns []*ModVulns, os, arch string) affectingVulns
 						filteredImports = append(filteredImports, p)
 					}
 				}
+				// If we pruned all existing Packages, then the affected is
+				// empty and we can filter it out. Note that Packages can
+				// be empty for vulnerabilities that have no package or
+				// symbol information available.
 				if len(a.EcosystemSpecific.Packages) != 0 && len(filteredImports) == 0 {
 					continue
 				}
@@ -177,6 +187,7 @@ func affectingVulnerabilities(vulns []*ModVulns, os, arch string) affectingVulns
 			newV.Affected = filteredAffected
 			filteredVulns = append(filteredVulns, &newV)
 		}
+
 		filtered = append(filtered, &ModVulns{
 			Module: module,
 			Vulns:  filteredVulns,
@@ -205,37 +216,66 @@ func matchesPlatformComponent(s string, ps []string) bool {
 	return false
 }
 
-// ForPackage returns the vulnerabilities for the module which is the most
-// specific prefix of importPath, or nil if there is no matching module with
-// vulnerabilities.
-func (aff affectingVulns) ForPackage(importPath string) []*osv.Entry {
+// moduleVulns return vulnerabilities for module. If module is unknown,
+// it figures the module from package importPath. It returns the module
+// whose path is the longest prefix of importPath.
+func (aff affectingVulns) moduleVulns(module, importPath string) *ModVulns {
+	moduleKnown := module != "" && module != internal.UnknownModulePath
+
 	isStd := IsStdPackage(importPath)
-	var mostSpecificMod *ModVulns
+	var mostSpecificMod *ModVulns // for the case where !moduleKnown
 	for _, mod := range aff {
 		md := mod
 		if isStd && mod.Module.Path == internal.GoStdModulePath {
-			// standard library packages do not have an associated module,
+			// Standard library packages do not have an associated module,
 			// so we relate them to the artificial stdlib module.
-			mostSpecificMod = md
+			return md
+		}
+
+		if moduleKnown {
+			if mod.Module.Path == module {
+				// If we know exactly which module we need,
+				// return its vulnerabilities.
+				return md
+			}
 		} else if strings.HasPrefix(importPath, md.Module.Path) {
+			// If module is unknown, we try to figure it out from importPath.
+			// We take the module whose path has the longest match to importPath.
+			// TODO: do matching based on path components.
 			if mostSpecificMod == nil || len(mostSpecificMod.Module.Path) < len(md.Module.Path) {
 				mostSpecificMod = md
 			}
 		}
 	}
-	if mostSpecificMod == nil {
+	return mostSpecificMod
+}
+
+// ForPackage returns the vulnerabilities for the importPath belonging to
+// module.
+//
+// If module is unknown, ForPackage will resolve it as the most specific
+// prefix of importPath.
+func (aff affectingVulns) ForPackage(module, importPath string) []*osv.Entry {
+	mod := aff.moduleVulns(module, importPath)
+	if mod == nil {
 		return nil
 	}
 
-	if mostSpecificMod.Module.Replace != nil {
+	if mod.Module.Replace != nil {
 		// standard libraries do not have a module nor replace module
-		importPath = fmt.Sprintf("%s%s", mostSpecificMod.Module.Replace.Path, strings.TrimPrefix(importPath, mostSpecificMod.Module.Path))
+		importPath = fmt.Sprintf("%s%s", mod.Module.Replace.Path, strings.TrimPrefix(importPath, mod.Module.Path))
 	}
-	vulns := mostSpecificMod.Vulns
+	vulns := mod.Vulns
 	packageVulns := []*osv.Entry{}
 Vuln:
 	for _, v := range vulns {
 		for _, a := range v.Affected {
+			if len(a.EcosystemSpecific.Packages) == 0 {
+				// no packages means all packages are vulnerable
+				packageVulns = append(packageVulns, v)
+				continue Vuln
+			}
+
 			for _, p := range a.EcosystemSpecific.Packages {
 				if p.Path == importPath {
 					packageVulns = append(packageVulns, v)
@@ -247,9 +287,9 @@ Vuln:
 	return packageVulns
 }
 
-// ForSymbol returns vulnerabilities for symbol in aff.ForPackage(importPath).
-func (aff affectingVulns) ForSymbol(importPath, symbol string) []*osv.Entry {
-	vulns := aff.ForPackage(importPath)
+// ForSymbol returns vulnerabilities for symbol in aff.ForPackage(module, importPath).
+func (aff affectingVulns) ForSymbol(module, importPath, symbol string) []*osv.Entry {
+	vulns := aff.ForPackage(module, importPath)
 	if vulns == nil {
 		return nil
 	}
@@ -258,6 +298,12 @@ func (aff affectingVulns) ForSymbol(importPath, symbol string) []*osv.Entry {
 vulnLoop:
 	for _, v := range vulns {
 		for _, a := range v.Affected {
+			if len(a.EcosystemSpecific.Packages) == 0 {
+				// no packages means all symbols of all packages are vulnerable
+				symbolVulns = append(symbolVulns, v)
+				continue vulnLoop
+			}
+
 			for _, p := range a.EcosystemSpecific.Packages {
 				if p.Path != importPath {
 					continue
@@ -280,16 +326,4 @@ func contains(symbols []string, target string) bool {
 		}
 	}
 	return false
-}
-
-func IsStdPackage(pkg string) bool {
-	if pkg == "" {
-		return false
-	}
-	// std packages do not have a "." in their path. For instance, see
-	// Contains in pkgsite/+/refs/heads/master/internal/stdlbib/stdlib.go.
-	if i := strings.IndexByte(pkg, '/'); i != -1 {
-		pkg = pkg[:i]
-	}
-	return !strings.Contains(pkg, ".")
 }

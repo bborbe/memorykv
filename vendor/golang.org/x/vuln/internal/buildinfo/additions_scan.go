@@ -14,13 +14,14 @@ import (
 	"debug/buildinfo"
 	"errors"
 	"fmt"
-	"io"
 	"net/url"
+	"os"
 	"runtime/debug"
 	"strings"
 
 	"golang.org/x/tools/go/packages"
 	"golang.org/x/vuln/internal/gosym"
+	"golang.org/x/vuln/internal/goversion"
 )
 
 func debugModulesToPackagesModules(debugModules []*debug.Module) []*packages.Module {
@@ -46,14 +47,30 @@ type Symbol struct {
 }
 
 // ExtractPackagesAndSymbols extracts symbols, packages, modules from
-// bin as well as bin's metadata.
+// Go binary file as well as bin's metadata.
 //
 // If the symbol table is not available, such as in the case of stripped
 // binaries, returns module and binary info but without the symbol info.
-func ExtractPackagesAndSymbols(bin io.ReaderAt) ([]*packages.Module, []Symbol, *debug.BuildInfo, error) {
-	bi, err := buildinfo.Read(bin)
+func ExtractPackagesAndSymbols(file string) ([]*packages.Module, []Symbol, *debug.BuildInfo, error) {
+	bin, err := os.Open(file)
 	if err != nil {
 		return nil, nil, nil, err
+	}
+	defer bin.Close()
+
+	bi, err := buildinfo.Read(bin)
+	if err != nil {
+		// It could be that bin is an ancient Go binary.
+		v, err := goversion.ReadExe(file)
+		if err != nil {
+			return nil, nil, nil, err
+		}
+		bi := &debug.BuildInfo{
+			GoVersion: v.Release,
+			Main:      debug.Module{Path: v.ModuleInfo},
+		}
+		// We cannot analyze symbol tables of ancient binaries.
+		return nil, nil, bi, nil
 	}
 
 	funcSymName := gosym.FuncSymName(bi.GoVersion)
@@ -77,10 +94,9 @@ func ExtractPackagesAndSymbols(bin io.ReaderAt) ([]*packages.Module, []Symbol, *
 
 	pclntab, textOffset := x.PCLNTab()
 	if pclntab == nil {
-		// TODO(https://go.dev/issue/59731): if we have build information, but
-		// not PCLN table, we should be able to fall back to much higher
-		// granularity vulnerability checking.
-		return nil, nil, nil, errors.New("unable to load the PCLN table")
+		// If we have build information, but not PCLN table, fall
+		// back to much higher granularity vulnerability checking.
+		return debugModulesToPackagesModules(bi.Deps), nil, bi, nil
 	}
 	lineTab := gosym.NewLineTable(pclntab, textOffset)
 	if lineTab == nil {
