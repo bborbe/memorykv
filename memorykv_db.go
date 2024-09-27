@@ -34,6 +34,10 @@ type memorydb struct {
 	tx libkv.Tx
 }
 
+func (b *memorydb) Remove() error {
+	return nil
+}
+
 func (b *memorydb) Sync() error {
 	return nil
 }
