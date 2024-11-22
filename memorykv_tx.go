@@ -23,6 +23,17 @@ type tx struct {
 	data map[string]libkv.Bucket
 }
 
+func (t *tx) ListBucketNames(ctx context.Context) (libkv.BucketNames, error) {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+
+	result := libkv.BucketNames{}
+	for bucketName := range t.data {
+		result = append(result, libkv.BucketName(bucketName))
+	}
+	return result, nil
+}
+
 func (t *tx) Bucket(ctx context.Context, name libkv.BucketName) (libkv.Bucket, error) {
 	bucket, ok := t.data[name.String()]
 	if !ok {
