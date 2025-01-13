@@ -8,6 +8,20 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.11.2
+
+- add missing license file
+- go mod update
+
+## v1.11.1
+
+- rename NewUpdateHandlerViewTx -> NewJsonHandlerUpdateTx
+
+## v1.11.0
+
+- add JsonHandlerTx
+- go mod update
+
 ## v1.10.0
 
 - add ListBucketNames

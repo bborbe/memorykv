@@ -35,6 +35,9 @@ func (t *tx) ListBucketNames(ctx context.Context) (libkv.BucketNames, error) {
 }
 
 func (t *tx) Bucket(ctx context.Context, name libkv.BucketName) (libkv.Bucket, error) {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+
 	bucket, ok := t.data[name.String()]
 	if !ok {
 		return nil, errors.Wrapf(ctx, libkv.BucketNotFoundError, "bucket %s not found", name)
@@ -43,6 +46,9 @@ func (t *tx) Bucket(ctx context.Context, name libkv.BucketName) (libkv.Bucket, e
 }
 
 func (t *tx) CreateBucket(ctx context.Context, name libkv.BucketName) (libkv.Bucket, error) {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+
 	_, ok := t.data[name.String()]
 	if ok {
 		return nil, errors.Wrapf(ctx, libkv.BucketAlreadyExistsError, "bucket %s already exists", name)
@@ -53,6 +59,9 @@ func (t *tx) CreateBucket(ctx context.Context, name libkv.BucketName) (libkv.Buc
 }
 
 func (t *tx) CreateBucketIfNotExists(ctx context.Context, name libkv.BucketName) (libkv.Bucket, error) {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+
 	bucket, ok := t.data[name.String()]
 	if ok {
 		return bucket, nil
@@ -63,6 +72,9 @@ func (t *tx) CreateBucketIfNotExists(ctx context.Context, name libkv.BucketName)
 }
 
 func (t *tx) DeleteBucket(ctx context.Context, name libkv.BucketName) error {
+	t.mux.Lock()
+	defer t.mux.Unlock()
+
 	_, ok := t.data[name.String()]
 	if !ok {
 		return errors.Wrapf(ctx, libkv.BucketNotFoundError, "bucket %s not found", name)
