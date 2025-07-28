@@ -1,6 +1,6 @@
 module github.com/bborbe/memorykv
 
-go 1.24.4
+go 1.24.5
 
 //replace github.com/bborbe/kv => ../kv
 
@@ -15,7 +15,7 @@ exclude (
 require (
 	github.com/actgardner/gogen-avro/v9 v9.2.0
 	github.com/bborbe/errors v1.3.0
-	github.com/bborbe/kv v1.14.1
+	github.com/bborbe/kv v1.14.2
 	github.com/golang/glog v1.2.5
 	github.com/google/addlicense v1.1.1
 	github.com/incu6us/goimports-reviser/v3 v3.9.1

@@ -2,8 +2,8 @@ github.com/actgardner/gogen-avro/v9 v9.2.0 h1:NF0/dq779nWwMHzpHIEoe106l3uxNNDK9u
 github.com/actgardner/gogen-avro/v9 v9.2.0/go.mod h1:nyTj6wPqDJoxM3qdnjcLv+EnMDSDFqE0qDpva2QRmKc=
 github.com/bborbe/errors v1.3.0 h1:LcCk5WjoH/sN+eBy45MspCYxsYAdrwla2hKePZdHLIM=
 github.com/bborbe/errors v1.3.0/go.mod h1:ZKSsf4/NJYhKkxSgtlLY+2jJa3hW2tbb/lQe3w9qZLM=
-github.com/bborbe/kv v1.14.1 h1:NZn98R9XZ3L/49z2tTBs4qe6ov40oIIVFFwNHp6mgTU=
-github.com/bborbe/kv v1.14.1/go.mod h1:enLXU96ndTm6L6JlpOvwK5S+/pcF7YPfQDxezWg+D7g=
+github.com/bborbe/kv v1.14.2 h1:5R1ZeequiGLY9SFD+BXbzkZuk/xz54EQMhzlYSNgS3o=
+github.com/bborbe/kv v1.14.2/go.mod h1:mjv9k1n41j0v5ez759PWvGESU/e5IZDqMioONEuJo5k=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/bmatcuk/doublestar/v4 v4.0.2/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
