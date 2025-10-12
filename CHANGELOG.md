@@ -8,6 +8,13 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.3.6
+
+- add golangci-lint configuration
+- update CI workflow
+- update Makefile with improved linting targets
+- go mod update
+
 ## v1.3.5
 
 - improve README with usage example and installation instructions

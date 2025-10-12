@@ -47,7 +47,10 @@ func (b *memorydb) Close() error {
 	return nil
 }
 
-func (b *memorydb) Update(ctx context.Context, fn func(ctx context.Context, tx libkv.Tx) error) error {
+func (b *memorydb) Update(
+	ctx context.Context,
+	fn func(ctx context.Context, tx libkv.Tx) error,
+) error {
 	glog.V(4).Infof("db update started")
 	if IsTransactionOpen(ctx) {
 		return errors.Wrapf(ctx, libkv.TransactionAlreadyOpenError, "transaction already open")
@@ -61,7 +64,10 @@ func (b *memorydb) Update(ctx context.Context, fn func(ctx context.Context, tx l
 	return nil
 }
 
-func (b *memorydb) View(ctx context.Context, fn func(ctx context.Context, tx libkv.Tx) error) error {
+func (b *memorydb) View(
+	ctx context.Context,
+	fn func(ctx context.Context, tx libkv.Tx) error,
+) error {
 	glog.V(4).Infof("db view started")
 	if IsTransactionOpen(ctx) {
 		return errors.Wrapf(ctx, libkv.TransactionAlreadyOpenError, "transaction already open")

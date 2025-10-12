@@ -51,14 +51,22 @@ func (t *tx) CreateBucket(ctx context.Context, name libkv.BucketName) (libkv.Buc
 
 	_, ok := t.data[name.String()]
 	if ok {
-		return nil, errors.Wrapf(ctx, libkv.BucketAlreadyExistsError, "bucket %s already exists", name)
+		return nil, errors.Wrapf(
+			ctx,
+			libkv.BucketAlreadyExistsError,
+			"bucket %s already exists",
+			name,
+		)
 	}
 	bucket := NewBucket()
 	t.data[name.String()] = bucket
 	return bucket, nil
 }
 
-func (t *tx) CreateBucketIfNotExists(ctx context.Context, name libkv.BucketName) (libkv.Bucket, error) {
+func (t *tx) CreateBucketIfNotExists(
+	ctx context.Context,
+	name libkv.BucketName,
+) (libkv.Bucket, error) {
 	t.mux.Lock()
 	defer t.mux.Unlock()
 

@@ -35,7 +35,7 @@ func (b *bucket) Iterator() libkv.Iterator {
 
 func (b *bucket) IteratorReverse() libkv.Iterator {
 	keys := b.keys()
-	sort.Sort(sort.StringSlice(keys))
+	sort.Strings(keys)
 	return NewIteratorReverse(keys, b)
 }
 
@@ -64,7 +64,7 @@ func (b *bucket) keys() []string {
 	b.mux.Lock()
 	defer b.mux.Unlock()
 	result := make([]string, 0, len(b.data))
-	for k, _ := range b.data {
+	for k := range b.data {
 		result = append(result, k)
 	}
 	return result
