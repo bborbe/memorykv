@@ -1,7 +1,12 @@
 ---
-status: approved
+status: completed
+summary: Project is in a healthy state — make precommit passes with exit code 0, 96.5% test coverage, no linting or security issues.
+container: memorykv-002-fix-tests-and-dod
+dark-factory-version: v0.59.5-dirty
 created: "2026-03-20T14:24:31Z"
 queued: "2026-03-20T14:24:31Z"
+started: "2026-03-20T15:10:40Z"
+completed: "2026-03-20T15:17:33Z"
 ---
 
 <summary>
