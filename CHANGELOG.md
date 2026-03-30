@@ -8,6 +8,14 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.4.8
+
+- Update bborbe/errors to v1.5.8 and bborbe/kv to v1.19.3
+- Update golangci-lint to v2.11.4 and osv-scanner to v2.3.5
+- Update docker, moby/buildkit, containerd dependencies
+- Remove large exclude block and update replace directive in go.mod
+- Update multiple indirect dependencies
+
 ## v1.4.7
 
 - chore: verify project health — all tests pass, linting clean, precommit succeeds at exit code 0
