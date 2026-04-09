@@ -8,6 +8,14 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.4.10
+
+- bump go 1.26.2
+- update bborbe/errors v1.5.9, bborbe/kv v1.19.4
+- update moby/buildkit v0.29.0, otel v1.40.0
+- update docker/cli, go-git, klauspost/compress and other indirect deps
+- add osv/trivy ignores for new CVEs
+
 ## v1.4.9
 
 - Update go-git/go-git to v5.17.1 (fix security vulnerabilities)
