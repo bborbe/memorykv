@@ -8,6 +8,12 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.6.0
+
+- **BREAKING**: `Stats(ctx)` now returns `*libkv.Stats` instead of `libkv.Stats` (matches bborbe/kv v1.21.0 interface)
+- Implement `StatsDetailed(ctx) (*libkv.Stats, error)` — adds per-bucket `KeyCount`; `Stats` (fast) leaves it zero
+- Bump bborbe/kv v1.20.0 → v1.21.1
+
 ## v1.5.0
 
 - implement `Stats(ctx) (Stats, error)` to satisfy bborbe/kv v1.20.0 `DB` interface
