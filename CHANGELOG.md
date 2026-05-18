@@ -8,6 +8,12 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.5.0
+
+- implement `Stats(ctx) (Stats, error)` to satisfy bborbe/kv v1.20.0 `DB` interface
+- bump bborbe/kv v1.19.7 → v1.20.0
+- bump ginkgo v2.28.3 → v2.29.0, gomega v1.40.0 → v1.41.0
+
 ## v1.4.12
 
 - bump bborbe/errors v1.5.11 → v1.5.13
