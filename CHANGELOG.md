@@ -8,6 +8,13 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.6.1
+
+- bump go 1.26.3 → 1.26.4
+- update golang.org/x/{exp,mod,net,sys,text,tools}
+- drop kisielk/errcheck indirect dep
+- exclude cloud.google.com/go v0.26.0
+
 ## v1.6.0
 
 - **BREAKING**: `Stats(ctx)` now returns `*libkv.Stats` instead of `libkv.Stats` (matches bborbe/kv v1.21.0 interface)
