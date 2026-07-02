@@ -8,6 +8,12 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.6.2
+
+- bump github.com/bborbe/kv from v1.21.1 to v1.21.2
+- bump github.com/onsi/ginkgo/v2 from v2.29.0 to v2.32.0
+- bump github.com/onsi/gomega from v1.41.0 to v1.42.1
+
 ## v1.6.1
 
 - bump go 1.26.3 → 1.26.4
