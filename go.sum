@@ -2,8 +2,8 @@ github.com/Masterminds/semver/v3 v3.4.0 h1:Zog+i5UMtVoCU8oKka5P7i9q9HgrJeGzI9SA1
 github.com/Masterminds/semver/v3 v3.4.0/go.mod h1:4V+yj/TJE1HU9XfppCwVMZq3I84lprf4nC11bSS5beM=
 github.com/bborbe/errors v1.5.15 h1:GL/DpWlxkVcprneGM7xfTkhZNvzKXmdgNMtLDlAoK0Y=
 github.com/bborbe/errors v1.5.15/go.mod h1:bBTxWY1WGdpSN2MbB2uQQIoFCWjYz85UKVauzBadZRA=
-github.com/bborbe/kv v1.21.2 h1:T0a5IIi7JLVI/GBXneuH4g5L63Fl5uNFDgQE6nG1FTA=
-github.com/bborbe/kv v1.21.2/go.mod h1:9NhDpX/YO3CB2ZX1NCwPbtJWeMFgOea7QBe49XyY4+8=
+github.com/bborbe/kv v1.21.4 h1:YenBcGL3pq9mzUs9QtTe4p2C6Ko7HrdGsAmnuxGLtXg=
+github.com/bborbe/kv v1.21.4/go.mod h1:S/koC+K76ubSGW3sAEUnEJrRP2D+oz2Yc6iJbZmelnk=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
