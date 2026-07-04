@@ -8,6 +8,10 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## v1.6.3
+
+- Bump github.com/bborbe/errors to v1.5.15
+
 ## v1.6.2
 
 - bump github.com/bborbe/kv from v1.21.1 to v1.21.2
