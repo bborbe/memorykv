@@ -41,3 +41,7 @@ func main() {
 ```
 
 Perfect for testing and development where you need a lightweight, ephemeral key-value store that's compatible with other `github.com/bborbe/kv` implementations.
+
+## License
+
+This project is licensed under the BSD-style license. See the [LICENSE](LICENSE) file for details.
