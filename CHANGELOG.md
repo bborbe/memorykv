@@ -8,6 +8,12 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## Unreleased
+
+- update Go to 1.26.6
+- update golang.org/x/mod to v0.40.0 (fixes GO-2026-6179, GO-2026-6180)
+- update github.com/Masterminds/semver/v3, github.com/bborbe/errors, github.com/bborbe/kv, github.com/go-logr/logr, github.com/google/pprof, github.com/onsi/ginkgo/v2, github.com/prometheus/client_golang, github.com/prometheus/common, github.com/prometheus/procfs, go.yaml.in/yaml/v2, go.yaml.in/yaml/v3, golang.org/x/{exp,net,sync,sys,text,tools}, google.golang.org/protobuf
+
 ## v1.6.7
 
 - docs: add a License section to the README
