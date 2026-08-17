@@ -8,6 +8,10 @@ Please choose versions by [Semantic Versioning](http://semver.org/).
 * MINOR version when you add functionality in a backwards-compatible manner, and
 * PATCH version when you make backwards-compatible bug fixes.
 
+## Unreleased
+
+- update Go to 1.26.6 and update dependencies (GO-2026-6179, GO-2026-6180, GO-2026-5972, GO-2026-6090, CVE-2026-56864, CVE-2026-56865)
+
 ## v1.6.7
 
 - docs: add a License section to the README
