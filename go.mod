@@ -1,14 +1,14 @@
 module github.com/bborbe/memorykv
 
-go 1.26.6
+go 1.27.0
 
 require (
-	github.com/bborbe/errors v1.5.17
-	github.com/bborbe/kv v1.21.9
+	github.com/bborbe/errors v1.5.20
+	github.com/bborbe/kv v1.21.10
 	github.com/golang/glog v1.2.5
 	github.com/onsi/ginkgo/v2 v2.32.1
 	github.com/onsi/gomega v1.42.1
-	golang.org/x/exp v0.0.0-20260813180055-c1d0aacb2297
+	golang.org/x/exp v0.0.0-20260820142414-ca536658362e
 )
 
 require (
