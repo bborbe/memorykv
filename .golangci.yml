@@ -33,6 +33,9 @@ linters:
     gosec:
       excludes:
         - G104
+    govet:
+      disable:
+        - inline   # Go 1.27 govet inline flags stdlib generic calls (e.g. slices.BinarySearch) it cannot inline — noise, not a defect
 
   exclusions:
     presets:
