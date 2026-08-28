@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v1.6.10
 
 - chore: update github.com/bborbe/errors to v1.6.0, github.com/bborbe/kv to v1.21.12, github.com/onsi/gomega to v1.43.0, golang.org/x/exp to v0.0.0-20260824195058-e88cd73687aa
 
