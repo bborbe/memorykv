@@ -3,12 +3,12 @@ module github.com/bborbe/memorykv
 go 1.27.0
 
 require (
-	github.com/bborbe/errors v1.5.20
-	github.com/bborbe/kv v1.21.10
+	github.com/bborbe/errors v1.6.0
+	github.com/bborbe/kv v1.21.12
 	github.com/golang/glog v1.2.5
 	github.com/onsi/ginkgo/v2 v2.32.1
-	github.com/onsi/gomega v1.42.1
-	golang.org/x/exp v0.0.0-20260820142414-ca536658362e
+	github.com/onsi/gomega v1.43.0
+	golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa
 )
 
 require (
@@ -18,7 +18,7 @@ require (
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/pprof v0.0.0-20260802141513-ef3492d7dac3 // indirect
+	github.com/google/pprof v0.0.0-20260825171938-4d453200e7d9 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
