@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update github.com/bborbe/kv to v1.21.13
+
 ## v1.6.11
 
 - chore: update go module dependencies
