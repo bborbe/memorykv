@@ -4,7 +4,7 @@ go 1.27.0
 
 require (
 	github.com/bborbe/errors v1.6.0
-	github.com/bborbe/kv v1.21.12
+	github.com/bborbe/kv v1.21.13
 	github.com/golang/glog v1.2.5
 	github.com/onsi/ginkgo/v2 v2.32.1
 	github.com/onsi/gomega v1.43.0
@@ -18,7 +18,7 @@ require (
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-task/slim-sprig/v3 v3.0.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/pprof v0.0.0-20260902005441-ca85771921e4 // indirect
+	github.com/google/pprof v0.0.0-20260903180319-d6c3cb2f37ec // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
