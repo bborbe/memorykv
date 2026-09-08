@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update github.com/bborbe/kv to v1.21.16
+
 ## v1.6.13
 
 - chore: update Go to 1.27.1 and github.com/bborbe/errors to v1.6.1, github.com/bborbe/kv to v1.21.14
