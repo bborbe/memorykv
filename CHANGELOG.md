@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v1.6.15
 
 - chore: update github.com/onsi/ginkgo/v2 to v2.33.0, github.com/onsi/gomega to v1.44.0, golang.org/x/exp to v0.0.0-20260908205506-85c1c2202aba
 
