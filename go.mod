@@ -4,11 +4,11 @@ go 1.27.2
 
 require (
 	github.com/bborbe/errors v1.6.3
-	github.com/bborbe/kv v1.21.17
+	github.com/bborbe/kv v1.21.18
 	github.com/golang/glog v1.2.5
 	github.com/onsi/ginkgo/v2 v2.33.1
 	github.com/onsi/gomega v1.44.0
-	golang.org/x/exp v0.0.0-20261011100332-faecfb24eb49
+	golang.org/x/exp v0.0.0-20261013213113-2ab7f3cbc5fb
 )
 
 require (
