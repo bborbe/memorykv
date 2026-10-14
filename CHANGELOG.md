@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update github.com/bborbe/kv to v1.21.18, golang.org/x/exp to v0.0.0-20261013213113-2ab7f3cbc5fb
+
 ## v1.6.17
 
 - chore: update Go to 1.27.2 and github.com/bborbe/errors to v1.6.3, github.com/bborbe/kv to v1.21.17, github.com/onsi/ginkgo/v2 to v2.33.1, golang.org/x/exp to v0.0.0-20261011100332-faecfb24eb49
