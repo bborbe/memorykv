@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update golang.org/x/exp to v0.0.0-20261014143641-f0251eb4aa3e
+
 ## v1.6.18
 
 - chore: update github.com/bborbe/kv to v1.21.18, golang.org/x/exp to v0.0.0-20261013213113-2ab7f3cbc5fb
