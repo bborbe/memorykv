@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update Go to 1.27.3
+
 ## v1.6.19
 
 - chore: update golang.org/x/exp to v0.0.0-20261014143641-f0251eb4aa3e
