@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v1.6.20
 
 - chore: update Go to 1.27.3
 
