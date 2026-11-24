@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: remove 20 stale vulnerability ignores (withdrawn advisory, module absent from go.mod, or version outside the affected range)
+
 ## v1.7.0
 
 - feat: add a `check-task-link` gate that fails a PR whose body carries no `Task: <task_identifier>` line, and install a pinned, checksum-verified Trivy release so `test` stops failing on the retired keyring helper
