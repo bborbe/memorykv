@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v1.7.1
 
 - chore: remove 20 stale vulnerability ignores (withdrawn advisory, module absent from go.mod, or version outside the affected range)
 
