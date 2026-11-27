@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- chore: update github.com/bborbe/errors to v1.7.1, github.com/bborbe/kv to v1.21.31, github.com/onsi/ginkgo/v2 to v2.34.0, golang.org/x/exp to v0.0.0-20261124000051-d6646c509b6d
+
 ## v1.7.2
 
 - chore: remove orphaned section comments left in `.trivyignore` by the stale-ignore sweep
